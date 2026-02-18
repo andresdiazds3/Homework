@@ -4,7 +4,7 @@ import '../styles/ContactCard.css'
 type ContactCardProps = {
     id:number;
     pfp: string; 
-    prefijo: number;
+    prefijo: string;
     numero: number;
     nombre: string;
     manejarDelete: (id:number) => void;
@@ -16,7 +16,7 @@ function ContactCard({id, pfp, prefijo, numero, nombre, manejarDelete}: ContactC
           <img src={pfp} alt="ProfilePic" />
         <div className="infoContactCard">
           <h1>{nombre}</h1>
-          <p>+{prefijo} {numero}</p>
+          <p>{prefijo} {numero}</p>
         </div>
         <div>
             <AiOutlineCloseCircle onClick={() => manejarDelete(id) }/>
