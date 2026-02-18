@@ -1,0 +1,52 @@
+.contactCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1e293b;
+  padding: 15px 20px;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.contactCard:hover {
+  transform: translateY(-3px);
+  border: 1px solid #38bdf8;
+  box-shadow: 0 8px 20px rgba(56, 189, 248, 0.2);
+}
+
+.contactCard img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #38bdf8;
+}
+
+.infoContactCard {
+  flex: 1;
+  margin-left: 15px;
+}
+
+.infoContactCard h1 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.infoContactCard p {
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+.contactCard svg {
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #64748b;
+  transition: all 0.3s ease;
+}
+
+.contactCard svg:hover {
+  color: #ef4444;
+  transform: scale(1.2);
+}

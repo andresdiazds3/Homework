@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import ContactCardSection from './components/ContactSection'
 import './App.css'
 
 function App() {
@@ -6,7 +7,8 @@ function App() {
 
   return (
     <>
-      <h1>el Fafas es Gay</h1>
+      <h1></h1>
+        <ContactCardSection/>
     </>
   )
 }
