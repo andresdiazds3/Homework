@@ -10,6 +10,12 @@ const ContactCardSection = () => {
     const [contactos, setContactos] = useState(contactosIniciales)
     const [mostrarModal, setMostrarModal] = useState(false)
 
+    const agregarContacto = (newContact:any) => {
+      const contactosActuales = [newContact, ...contactos];
+      setContactos(contactosActuales);
+      setMostrarModal(false)
+    }
+
     const manejarDelete = (id: number) => {
       const confirmacionDelete = window.confirm(
         "¿Estás seguro que deseas eliminar este contacto?",
@@ -19,7 +25,6 @@ const ContactCardSection = () => {
         setContactos(contactosActuales);
       }
     };
-    
 
   return (
     <section>
@@ -42,7 +47,7 @@ const ContactCardSection = () => {
       </div>
       {mostrarModal && (
           <div className="modal">
-            <ModalContactForm onClose={() => setMostrarModal(false)} />
+            <ModalContactForm onClose={() => setMostrarModal(false)} onAdd={agregarContacto}/>
           </div>
       )}
     </section>
