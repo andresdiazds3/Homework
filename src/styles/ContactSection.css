@@ -8,6 +8,13 @@ section {
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+
 section h1 {
   margin-bottom: 25px;
   font-size: 1.8rem;
@@ -16,6 +23,29 @@ section h1 {
 }
 
 section > div {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.btnAdd {
+  margin-bottom: 20px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  background: #38bdf8;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btnAdd:hover {
+  background: #0ea5e9;
+  transform: translateY(-2px);
+}
+
+.contactList {
   display: flex;
   flex-direction: column;
   gap: 15px;
