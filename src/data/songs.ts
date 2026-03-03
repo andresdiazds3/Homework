@@ -1,4 +1,4 @@
-import Song from "../classes/song";
+import Song from "../classes/Song";
 
 export const songs = [
   new Song("Shape of You", "Ed Sheeran", "3:53"),

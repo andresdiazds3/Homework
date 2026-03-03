@@ -1,12 +1,14 @@
 import './App.css'
 import Player from './components/Player'
+import Browser from './components/BrowserDoubly'
 
 function App() {
 
 
   return (
     <div className='App'>
-      <Player />
+      <Player/>
+      <Browser/>
     </div>
   )
 }

@@ -11,3 +11,12 @@ body {
   align-items: center;
   height: 100vh;
 }
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px; /* separación entre tarjetas */
+  margin-top: 50px;
+  flex-wrap: wrap; /* por si la pantalla es pequeña */
+}
