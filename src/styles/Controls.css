@@ -1,0 +1,25 @@
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.controls button {
+  background: #1db954;
+  border: none;
+  color: black;
+  font-size: 16px;
+  padding: 12px 18px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.controls button:hover {
+  background: #1ed760;
+  transform: scale(1.1);
+}
+
+.controls button:active {
+  transform: scale(0.95);
+}

@@ -1,0 +1,14 @@
+.player {
+  background: #181818;
+  padding: 30px;
+  border-radius: 20px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+.player h1 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #1db954;
+}
