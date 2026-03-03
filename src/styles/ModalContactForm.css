@@ -1,116 +1,128 @@
-/* 🔹 Overlay oscuro con blur */
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(15, 23, 42, 0.7);
-  backdrop-filter: blur(6px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  animation: fadeIn 0.2s ease-in-out;
+/* ModalContactForm.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap');
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
-/* 🔹 Caja del modal */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
 .modal {
-  background: rgba(30, 41, 59, 0.95);
-  padding: 30px;
-  width: 380px;
-  border-radius: 20px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-  animation: scaleIn 0.25s ease-in-out;
+  background: #161616;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
+  max-width: 400px;
+  padding: 40px 36px;
+  position: relative;
+  animation: slideUp 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* 🔹 Título */
-.modal h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #38bdf8;
-  font-weight: 600;
+.modal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 36px;
+  right: 36px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 87, 51, 0.6), transparent);
 }
 
-/* 🔹 Form layout */
 .modal form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 16px;
 }
 
-/* 🔹 Inputs y Select */
-.modal input,
-.modal select {
-  padding: 10px 14px;
-  border-radius: 10px;
-  border: 1px solid #334155;
-  background: #0f172a;
-  color: #f1f5f9;
+.modal form h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #f5f5f5;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.modal form input {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f5f5f5;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 300;
+  padding: 14px 16px;
   outline: none;
-  transition: all 0.2s ease;
-  font-size: 0.9rem;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  width: 100%;
 }
 
-/* 🔹 Focus effect */
-.modal input:focus,
-.modal select:focus {
-  border-color: #38bdf8;
-  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.3);
+.modal form input::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+  font-style: italic;
 }
 
-/* 🔹 Botones */
-.modal button {
-  padding: 10px;
-  border-radius: 10px;
+.modal form input:focus {
+  border-color: rgba(255, 87, 51, 0.5);
+  background: rgba(255, 87, 51, 0.03);
+}
+
+.modal form input[type='number']::-webkit-inner-spin-button,
+.modal form input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.modal form button[type='submit'] {
+  margin-top: 8px;
+  background: #ff5733;
   border: none;
+  color: #0e0e0e;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 14px;
   cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.modal form button[type='submit']:hover {
+  background: #ff6e4e;
+  transform: translateY(-1px);
+}
+
+.modal form button[type='submit']:active {
+  transform: translateY(0);
+}
+
+.modal form button[type='button'] {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.35);
+  font-family: 'Syne', sans-serif;
+  font-size: 0.78rem;
   font-weight: 600;
-  transition: 0.2s ease;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 12px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
 
-/* 🔹 Botón Guardar */
-.modal button[type="submit"] {
-  background: #38bdf8;
-  color: white;
-}
-
-.modal button[type="submit"]:hover {
-  background: #0ea5e9;
-  transform: translateY(-2px);
-}
-
-/* 🔹 Botón Cancelar */
-.modal button[type="button"] {
-  background: #334155;
-  color: white;
-}
-
-.modal button[type="button"]:hover {
-  background: #475569;
-}
-
-/* 🔹 Animaciones */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes scaleIn {
-  from {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-/* 🔹 Responsive */
-@media (max-width: 480px) {
-  .modal {
-    width: 90%;
-    padding: 20px;
-  }
+.modal form button[type='button']:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.6);
 }

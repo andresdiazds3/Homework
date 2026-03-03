@@ -1,30 +1,28 @@
 import { useState } from "react";
-import { prefijos } from "../data/prefijosData";
 import {v4 as uuidv4} from 'uuid'
 import profilePic from '../img/pfp.webp'
 import '../styles/ModalContactForm.css'
 
 type ModalContactFormProps = {
   onClose: () => void;
-  onAdd: (contacto: any) => void;
+  onAdd: (student: any) => void;
 }
 
 function ModalContactForm ({onClose, onAdd}:ModalContactFormProps){
-
   const [inputName, setInputName] = useState("")
-  const [inputTel, setInputTel] = useState("")
-  const [inputPrefijo, setInputPrefijo] = useState(prefijos[0].countryCode);
+  const [inputAge, setInputAge] = useState()
+  const [inputCode, setInputCode] = useState();
 
-  const manejarCambioPrefijo = (e: any) => {
-  setInputPrefijo(e.target.value);
+  const manejarCambioAge = (e: any) => {
+  setInputAge(e.target.value);
     };
 
   const manejarCambioName = (e:any) => {
         setInputName(e.target.value);
     }
 
-  const manejarCambioTel = (e:any) => {
-        setInputTel(e.target.value);
+  const manejarCambioCode = (e:any) => {
+        setInputCode(e.target.value);
     }
 
   const manejarEnvio = (e:any) => {
@@ -33,9 +31,9 @@ function ModalContactForm ({onClose, onAdd}:ModalContactFormProps){
     const newContact = {
       id: uuidv4(),
       pfp: profilePic,
-      prefijo: inputPrefijo,
-      numero: inputTel,
-      nombre: inputName
+      name: inputName,
+      age: inputAge,
+      code: inputCode
     }
     console.log("Enviando Contacto: ", newContact)
     onAdd(newContact)
@@ -52,26 +50,25 @@ function ModalContactForm ({onClose, onAdd}:ModalContactFormProps){
 
           <input
             type="text"
-            name="usuario"
-            placeholder="Nombre De Contacto"
+            name="nombre"
+            placeholder="Nombre De Estudiante"
             value={inputName}
             onChange={manejarCambioName}
           />
-
-          <select name="texto" onChange={manejarCambioPrefijo}>
-            {prefijos.map((x) => (
-              <option key={x.code} value={x.countryCode}>
-                {x.name} ({x.countryCode})
-              </option>
-            ))}
-          </select>
+          <input
+            type="number"
+            name="age"
+            placeholder="Edad"
+            value={inputAge}
+            onChange={manejarCambioAge}
+          />
 
           <input
             type="number"
-            name="TEL"
-            placeholder="Numero de Tel"
-            value={inputTel}
-            onChange={manejarCambioTel}
+            name="code"
+            placeholder="Codigo Estudiantil"
+            value={inputCode}
+            onChange={manejarCambioCode}
           />
 
           <button type="submit">Guardar</button>

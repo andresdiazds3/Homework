@@ -1,0 +1,13 @@
+import "../styles/Controls.css"
+
+type Props = {
+  onNext: () => void;
+};
+
+export default function Controls({ onNext }: Props) {
+  return (
+    <div className="controls">
+      <button onClick={onNext}>Siguiente</button>
+    </div>
+  );
+}

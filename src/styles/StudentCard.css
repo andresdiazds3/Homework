@@ -1,10 +1,11 @@
+/* ContactSection.css */
+
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap');
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  /* 👆 quitamos el border inválido */
 }
 
 section {
@@ -26,8 +27,8 @@ section h1 {
   font-weight: 800;
   color: #f5f5f5;
   letter-spacing: -0.04em;
-  text-transform: uppercase;
   margin-bottom: 8px;
+  text-transform: uppercase;
 }
 
 .btnAdd {
@@ -66,6 +67,7 @@ section h1 {
   border-color: rgba(255, 255, 255, 0.4);
 }
 
+/* Card list wrapper */
 .contactList {
   width: 100%;
   max-width: 420px;
@@ -73,6 +75,7 @@ section h1 {
   justify-content: center;
 }
 
+/* The card */
 .contactCard {
   width: 100%;
   background: #161616;
@@ -113,6 +116,7 @@ section h1 {
   }
 }
 
+/* Profile pic */
 .contactCard img {
   width: 72px;
   height: 72px;
@@ -127,6 +131,7 @@ section h1 {
   filter: grayscale(0%);
 }
 
+/* Info block */
 .infoContactCard {
   display: flex;
   flex-direction: column;
@@ -151,6 +156,7 @@ section h1 {
   font-size: 0.8rem;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.02em;
   font-style: italic;
 }
 
@@ -160,6 +166,7 @@ section h1 {
   color: rgba(255, 255, 255, 0.55);
 }
 
+/* Delete icon */
 .contactCard > div:last-child svg {
   width: 20px;
   height: 20px;
@@ -171,4 +178,22 @@ section h1 {
 .contactCard > div:last-child svg:hover {
   color: #ff5733;
   transform: scale(1.15);
+}
+
+/* Modal overlay */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }

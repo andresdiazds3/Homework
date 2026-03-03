@@ -1,57 +1,71 @@
-
-import ContactCard from "./ContactCard"
+import StudentCard from "./StudentCtard";
 import ModalContactForm from "./ModalContactForm";
-import { useState } from "react";
-import {contactosIniciales} from '../data/contactData'
-import '../styles/ContactSection.css'
+import { useState, useRef, useEffect } from "react";
+import { LinkedList } from "../classes/LinkedList";
+import studentsData from "../data/studentData";
+import Controls from "./Controls";
+import Node from "../classes/node";
+import "../styles/ContactSection.css";
 
 const ContactCardSection = () => {
+  const [mostrarModal, setMostrarModal] = useState(false);
+  const [current, setCurrent] = useState<Node | null>(null);
+  const studentsRef = useRef(new LinkedList());
 
-    const [contactos, setContactos] = useState(contactosIniciales)
-    const [mostrarModal, setMostrarModal] = useState(false)
+  const initialized = useRef(false);
+  useEffect(() => {
+    if (initialized.current) return;
+    studentsData.forEach((s) => studentsRef.current.append(s));
+    setCurrent(studentsRef.current.head);
+    initialized.current = true;
+  }, []);
 
-    const agregarContacto = (newContact:any) => {
-      const contactosActuales = [newContact, ...contactos];
-      setContactos(contactosActuales);
-      setMostrarModal(false)
+  const agregarStudent = (newStudent: any) => {
+    studentsRef.current.append(newStudent);
+    setCurrent(studentsRef.current.head);
+    setMostrarModal(false)
+  };
+
+  const nextStudent = () => {
+    if (current?.next) {
+      setCurrent(current.next);
+    } else {
+      console.log("Terminaste la Playlist!");
     }
+  };
 
-    const manejarDelete = (id: number) => {
-      const confirmacionDelete = window.confirm(
-        "¿Estás seguro que deseas eliminar este contacto?",
-      );
-      if (confirmacionDelete) {
-        const contactosActuales = contactos.filter((x) => x.id !== id);
-        setContactos(contactosActuales);
-      }
-    };
+  const manejarDelete = (id: number) => {
+    const confirmacionDelete = window.confirm(
+      "¿Estás seguro que deseas eliminar este contacto?",
+    );
+    if (confirmacionDelete) {
+      studentsRef.current.remove(id);
+      setCurrent(studentsRef.current.head)
+    }
+  };
 
   return (
     <section>
       <h1> Mis Contactos </h1>
-      <button className = "btnAdd" onClick={() => setMostrarModal(true)}>
+      <button className="btnAdd" onClick={() => setMostrarModal(true)}>
         Añadir Contacto
       </button>
       <div className="contactList">
-        {contactos.map((x) => (
-          <ContactCard
-            key={x.id}
-            id={x.id}
-            pfp={x.pfp}
-            prefijo={x.prefijo}
-            numero={x.numero}
-            nombre={x.nombre}
-            manejarDelete={manejarDelete}
-          />
-        ))}
+        {current && (
+          <StudentCard student={current.value} manejarDelete={manejarDelete} />
+        )}
       </div>
+      <Controls onNext={nextStudent} />
       {mostrarModal && (
-          <div className="modal">
-            <ModalContactForm onClose={() => setMostrarModal(false)} onAdd={agregarContacto}/>
-          </div>
+        <div className="modal">
+          <ModalContactForm
+            onClose={() => setMostrarModal(false)}
+            onAdd={agregarStudent}
+          />
+        </div>
       )}
     </section>
   );
-}
+};
 
 export default ContactCardSection;
