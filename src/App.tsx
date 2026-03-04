@@ -1,12 +1,12 @@
-import ContactCardSection from './components/ContactSection'
 import './App.css'
+import TurnerSystem from './components/TurnerSystem'
 
 function App() {
 
 
   return (
     <>
-        <ContactCardSection />
+        <TurnerSystem/>
     </>
   )
 }
