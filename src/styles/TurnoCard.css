@@ -125,3 +125,55 @@
     font-size: 0.95rem;
   }
 }
+
+/* Controls.css */
+
+.controls {
+  margin-top: 32px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.controls button {
+  background: transparent;
+  border: 2px solid #cbd5e1;
+  color: #475569;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 10px 24px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  border-radius: 8px;
+}
+
+.controls button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #6366f1;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.controls button:hover {
+  color: #6366f1;
+  border-color: #6366f1;
+  background: rgba(99, 102, 241, 0.05);
+}
+
+.controls button:hover::after {
+  transform: scaleX(1);
+}
+
+.controls button:active {
+  transform: translateY(1px);
+}

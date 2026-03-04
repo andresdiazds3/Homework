@@ -1,7 +1,7 @@
-class Node {
+class DoublyNode {
     value: any;
-    next: Node | null;
-    prev: Node | null;
+    next: DoublyNode | null;
+    prev: DoublyNode | null;
 
     constructor(value: any){
         this.value = value;
@@ -11,4 +11,4 @@ class Node {
 
 }
 
-export default Node;
+export default DoublyNode;

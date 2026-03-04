@@ -1,19 +1,19 @@
 type Props = {
     id: number;
     nombre: string;
-    turno: number;
+    rol: string;
 }
 
-class Turno {
+class Medico {
     id: number;
     nombre: string;
-    turno: number;
+    rol: string;
 
-    constructor({id,nombre,turno}: Props){
+    constructor({id,nombre,rol}: Props){
         this.id = id;
         this.nombre = nombre;
-        this.turno = turno;
+        this.rol = rol;
     }
 }
 
-export default Turno;
+export default Medico;

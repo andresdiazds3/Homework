@@ -1,8 +1,8 @@
-import Node from "./Node";
+import DoublyNode from "./DoublyNode";
 
-export class LinkedList {
-  head: Node | null;
-  tail: Node | null;
+export class CircularDoubleLinkedList {
+  head: DoublyNode | null;
+  tail: DoublyNode | null;
   length: number;
 
   constructor() {
@@ -12,7 +12,7 @@ export class LinkedList {
   }
 
   append(value: any) {
-    const newNode = new Node(value);
+    const newNode = new DoublyNode(value);
 
     if (!this.head) {
       this.head = newNode;
@@ -32,19 +32,7 @@ export class LinkedList {
     this.length++;
   }
 
-  peek(value: any) {
-    if (!this.head) return null;
-
-    let current = this.head;
-
-    do {
-      if (current.value.id === value) {
-        return current;
-      }
-      current = current.next!;
-    } while (current !== this.head);
-  }
-
+  
   remove(value: any) {
     if (!this.head) return null;
 
@@ -59,21 +47,21 @@ export class LinkedList {
           this.tail = null;
         }
 
-        // eliminar head
+        // eliminar la cabeza de la lista
         else if (current === this.head) {
           this.head = this.head.next;
           this.head!.prev = this.tail;
           this.tail!.next = this.head;
         }
 
-        // eliminar tail
+        // eliminar la cola de la lista
         else if (current === this.tail) {
           this.tail = this.tail.prev;
           this.tail!.next = this.head;
           this.head!.prev = this.tail;
         }
 
-        // nodo intermedio
+        // eliminar un nodo intermedio 
         else {
           current.prev!.next = current.next;
           current.next!.prev = current.prev;
@@ -91,20 +79,5 @@ export class LinkedList {
     return this.length;
   }
 
-  print() {
-    if (!this.head) {
-      console.log("Lista vacía");
-      return;
-    }
 
-    let current = this.head;
-    let result = "";
-
-    do {
-      result += current.value + " <-> ";
-      current = current.next!;
-    } while (current !== this.head);
-
-    console.log(result + "(doble circular)");
-  }
 }

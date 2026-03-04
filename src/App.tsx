@@ -1,12 +1,12 @@
-import './App.css'
-import TurnerSystem from './components/TurnerSystem'
+
+import PanelAdministrativo from './components/PanelAdminsitrativo'
 
 function App() {
 
 
   return (
     <>
-        <TurnerSystem/>
+        <PanelAdministrativo/>
     </>
   )
 }

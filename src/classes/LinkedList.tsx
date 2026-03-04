@@ -1,4 +1,4 @@
-import Node from "./Node"
+import Node from "./NodeLinkedList"
 
 export class LinkedList {
   head: Node | null;
@@ -17,85 +17,58 @@ export class LinkedList {
     // lista vacía
     if (!this.head) {
       this.head = newNode;
-      this.tail = newNode;
-      newNode.next = newNode;
-      newNode.prev = newNode;
+      this.tail = newNode
     } else {
-      // conectar al final
-      newNode.prev = this.tail;
-      newNode.next = this.head;
-
       this.tail!.next = newNode;
-      this.head.prev = newNode;
-
-      this.tail = newNode;
+      this.tail = newNode
     }
-
+    
     this.length++;
   }
-
-
-  remove(value:any){
-    if(!this.head) return null;
-
-    let current = this.head;
-
-    do {
-      if(current.value.id === value){
-
-        //Caso de que es un solo nodo
-        if(this.head === this.tail){
-          this.head = null;
-          this.tail = null;
+  
+  peek(value:any, current = this.head){
+    while(current){
+        if(current.value.id === value){
+            return current;
         }
-
-        //Eliminar cabeza
-        else if (current === this.head){
-          this.head = this.head.next;
-          this.head!.prev = this.tail;
-          this.tail!.next = this.head;
-        }
-
-        //Eliminar cola
-        else if(current === this.tail){
-          this.tail = this.tail.prev;
-          this.tail!.next = this.head
-          this.head!.prev = this.tail;
-        }
-
-        else{
-          current.prev!.next = current.next;
-          current.next!.prev = current.prev;
-        }
-        this.length--;
-        return;
-      }
-
-      current = current.next!;
-
-    }while(current !== this.head)
-      return null;
+        current = current.next;
+    }
   }
 
-  size(){
-    return this.length;
-  }
+  remove(value: any) {
+  if (!this.head) return null;
 
-  print() {
-  if (!this.head) {
-    console.log("Lista vacía");
-    return;
+  // 🔹 eliminar head
+  if (this.head.value.id === value) {
+    this.head = this.head.next;
+
+    if (!this.head) {
+      this.tail = null;
+    }
+
+    this.length--;
+    return; 
   }
 
   let current = this.head;
-  let result = "";
 
-  do {
-    result += current.value + " <-> ";
-    current = current.next!;
-  } while (current !== this.head);
+  while (current.next && current.next.value.id !== value) {
+    current = current.next;
+  }
 
-  console.log(result + "(circular)");
+  if (current.next) {
+    current.next = current.next.next;
+
+    if (!current.next) {
+      this.tail = current;
+    }
+
+    this.length--;
+  }
 }
-
+    
+  size(){
+    return this.length;
+  }
+  
 }

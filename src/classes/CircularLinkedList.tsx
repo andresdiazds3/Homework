@@ -1,6 +1,6 @@
-import Node from "./Node";
+import Node from "./NodeLinkedList";
 
-export class LinkedList {
+export class CircularLinkedList {
   head: Node | null;
   tail: Node | null;
   length: number;
@@ -27,18 +27,7 @@ export class LinkedList {
     this.length++;
   }
 
-  peek(value: any) {
-    if (!this.head) return null;
 
-    let current = this.head;
-
-    do {
-      if (current.value.id === value) {
-        return current;
-      }
-      current = current.next!;
-    } while (current !== this.head);
-  }
 
   remove(value: any) {
     if (!this.head) return null;
@@ -78,20 +67,4 @@ export class LinkedList {
     return this.length;
   }
 
-  print() {
-    if (!this.head) {
-      console.log("Lista vacía");
-      return;
-    }
-
-    let current = this.head;
-    let result = "";
-
-    do {
-      result += current.value + " -> ";
-      current = current.next!;
-    } while (current !== this.head);
-
-    console.log(result + "(circular)");
-  }
 }
