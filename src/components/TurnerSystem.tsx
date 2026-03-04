@@ -28,10 +28,10 @@ const TurnerSystem = () => {
   }, [current])
 
   const nextTurno = () => {
-    if (current?.next) {
+    if (current?.next) { // el?, es para verificar que current no sea null, si no lo es da el .next 
       setCurrent(current.next);
     } else {
-      console.log("Nunca llegara aqui");
+      console.log("Nunca llegara aqui, porque es circular");
     }
   };
 
