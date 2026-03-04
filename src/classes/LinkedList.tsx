@@ -1,4 +1,4 @@
-import Node from "./node"
+import Node from "./Node"
 
 export class LinkedList {
   head: Node | null;
@@ -11,47 +11,70 @@ export class LinkedList {
     this.length = 0;
   }
 
-  append(value: any) {
+   append(value: any) {
     const newNode = new Node(value);
 
     // lista vacía
     if (!this.head) {
       this.head = newNode;
       this.tail = newNode;
+      newNode.next = newNode;
+      newNode.prev = newNode;
     } else {
       // conectar al final
+      newNode.prev = this.tail;
+      newNode.next = this.head;
+
       this.tail!.next = newNode;
+      this.head.prev = newNode;
+
       this.tail = newNode;
     }
 
     this.length++;
   }
 
+
   remove(value:any){
     if(!this.head) return null;
 
-    if(this.head.value.id === value){
-        this.head = this.head.next;
+    let current = this.head;
 
-        if(!this.head){
-            this.tail = null;
+    do {
+      if(current.value.id === value){
+
+        //Caso de que es un solo nodo
+        if(this.head === this.tail){
+          this.head = null;
+          this.tail = null;
         }
 
+        //Eliminar cabeza
+        else if (current === this.head){
+          this.head = this.head.next;
+          this.head!.prev = this.tail;
+          this.tail!.next = this.head;
+        }
+
+        //Eliminar cola
+        else if(current === this.tail){
+          this.tail = this.tail.prev;
+          this.tail!.next = this.head
+          this.head!.prev = this.tail;
+        }
+
+        else{
+          current.prev!.next = current.next;
+          current.next!.prev = current.prev;
+        }
         this.length--;
         return;
-    }
+      }
 
-    let current = this.head;
-    while(current.next && current.next.value.id !== value){
-        current = current.next;
-    }
+      current = current.next!;
 
-    if(current.next){
-        current.next = current.next.next;
-        if(!current.next) this.tail = current;
-        this.length--;
-        return;
-    }
+    }while(current !== this.head)
+      return null;
   }
 
   size(){
@@ -59,16 +82,20 @@ export class LinkedList {
   }
 
   print() {
+  if (!this.head) {
+    console.log("Lista vacía");
+    return;
+  }
+
   let current = this.head;
   let result = "";
 
-  while (current !== null) {
-    result += current.value + " -> ";
-    current = current.next;
-  }
+  do {
+    result += current.value + " <-> ";
+    current = current.next!;
+  } while (current !== this.head);
 
-  result += "null";
-  console.log(result);
+  console.log(result + "(circular)");
 }
 
 }
