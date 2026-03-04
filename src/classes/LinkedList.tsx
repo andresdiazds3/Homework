@@ -47,7 +47,7 @@ export class LinkedList {
     }
 
     if(current.next){
-        current.next.next = current.next;
+        current.next = current.next.next;
         if(!current.next) this.tail = current;
         this.length--;
         return;
