@@ -8,7 +8,7 @@ export const librosData: Book[] = [
 		editorial: "Planeta",
 	}),
 	new Book({
-		name: "Cien anos de soledad",
+		name: "Cien años de soledad",
 		ISBN: "9780307474728",
 		autor: "Gabriel Garcia Marquez",
 		editorial: "Vintage",
