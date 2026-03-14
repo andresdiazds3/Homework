@@ -3,8 +3,6 @@ import StackCard from "./stackCard";
 import { Stack } from "../classes/Stack";
 import { useEffect, useState } from "react";
 import { librosData } from "../data/librosData";
-import type { Book } from "../classes/Book";
-import "../styles/stackSection.css";
 
 function StackSection() {
   const [libros, setLibros] = useState<Stack>(new Stack());
@@ -23,45 +21,22 @@ function StackSection() {
     }
   }, []);
 
-  const manejarPop = () => {
-    //Metodo integrado de la clase stack
-    libros.pop()
-    updateTrigger((prev) => prev + 1)
-  }
-
-  const agregarLibro = (book:Book) => {
-    //Metodo integrado de la clase stack
-    libros.push(book)
-    updateTrigger((prev) => prev + 1)
-    setMostrarModal(false)
-  }
-
   return (
     <>
-      <div className="stack-section__header">
-        <h1 className="stack-section__title"> STACK DE LIBROS </h1>
+      <div>
+        <h1> STACK DE LIBROS </h1>
       </div>
 
-      <div className="stack-section__actions">
-        <button className="stack-section__button stack-section__button--primary" onClick={manejarPop}>
-          Tomar Libro
-        </button>
-        <button className="stack-section__button stack-section__button--secondary" onClick={() => setMostrarModal(true)}> 
-            Abrir Modal 
-        </button>
-      </div>
-      {mostrarModal && (
-          <div className="stack-section__modal-host">
-            <ModalNewBook onClose={() => setMostrarModal(false)} onAdd={agregarLibro}/>
-          </div>
-        )}
-
-      <div className="stack-section__stack">
+      <div>
         {libros.print().map((x) => (
           <StackCard key={`${x.ISBN}}`} book={x} />
         ))}
       </div>
-      
+      <div>
+        <button onClick={() => console.log("porahora bitch")}>
+          Tomar Libro
+        </button>
+      </div>
     </>
   );
 }

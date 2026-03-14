@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Book } from "../classes/Book";
-import "../styles/newBookForm.css";
 
 type ModalNewBookProps = {
   onClose: () => void;
@@ -51,11 +50,10 @@ function ModalNewBook ({onClose, onAdd}:ModalNewBookProps){
         className="modal"
         onClick={(e) => e.stopPropagation()}
       >
-        <form className="new-book-form" onSubmit={manejarEnvio}>
-          <h2 className="new-book-form__title">Nuevo Libro</h2>
+        <form onSubmit={manejarEnvio}>
+          <h2>Nuevo Libro</h2>
 
           <input
-            className="new-book-form__input"
             type="text"
             name="name"
             placeholder="Nombre del libro"
@@ -63,7 +61,6 @@ function ModalNewBook ({onClose, onAdd}:ModalNewBookProps){
             onChange={(e) => setInputName(e.target.value)}
           />
           <input
-            className="new-book-form__input"
             type="text"
             name="isbn"
             placeholder="ISBN"
@@ -72,7 +69,6 @@ function ModalNewBook ({onClose, onAdd}:ModalNewBookProps){
           />
 
           <input
-            className="new-book-form__input"
             type="text"
             name="autor"
             placeholder="Autor"
@@ -81,7 +77,6 @@ function ModalNewBook ({onClose, onAdd}:ModalNewBookProps){
           />
 
           <input
-            className="new-book-form__input"
             type="text"
             name="editorial"
             placeholder="Editorial"
@@ -89,8 +84,8 @@ function ModalNewBook ({onClose, onAdd}:ModalNewBookProps){
             onChange={(e) => setInputEditorial(e.target.value)}
           />
 
-          <button className="new-book-form__button new-book-form__button--submit" type="submit">Guardar</button>
-          <button className="new-book-form__button new-book-form__button--cancel" type="button" onClick={onClose}>
+          <button type="submit">Guardar</button>
+          <button type="button" onClick={onClose}>
             Cancelar
           </button>
         </form>
