@@ -1,11 +1,17 @@
 :root {
-  font-family: Georgia, "Times New Roman", serif;
+  --bank-navy: #0f2942;
+  --bank-blue: #174f86;
+  --bank-cyan: #2a8aca;
+  --bank-gold: #d6a540;
+  --bank-cream: #f7fbff;
+  --bank-ink: #10243a;
+  --bank-muted: #4e6580;
+
+  font-family: "Poppins", "Segoe UI", sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color: #2f2418;
-  background:
-    radial-gradient(circle at top, rgba(235, 222, 196, 0.8), transparent 34%),
-    linear-gradient(180deg, #efe3c9 0%, #e1cfaa 38%, #d5bc8c 100%);
+  color: var(--bank-ink);
+  background: linear-gradient(180deg, #d7e8f9 0%, #edf5fc 100%);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -24,14 +30,9 @@ body {
   margin: 0;
   min-height: 100vh;
   background:
-    linear-gradient(180deg, rgba(94, 63, 32, 0.08), rgba(94, 63, 32, 0.22)),
-    repeating-linear-gradient(
-      90deg,
-      rgba(122, 85, 43, 0.05) 0,
-      rgba(122, 85, 43, 0.05) 18px,
-      rgba(255, 248, 234, 0.06) 18px,
-      rgba(255, 248, 234, 0.06) 36px
-    );
+    radial-gradient(circle at 10% 5%, rgba(42, 138, 202, 0.24), transparent 38%),
+    radial-gradient(circle at 90% 0%, rgba(15, 41, 66, 0.22), transparent 30%),
+    linear-gradient(180deg, #edf5fc 0%, #d6e6f7 100%);
 }
 
 h1,
@@ -52,6 +53,6 @@ button {
 
 input:focus,
 button:focus-visible {
-  outline: 3px solid rgba(127, 61, 24, 0.25);
+  outline: 3px solid rgba(42, 138, 202, 0.35);
   outline-offset: 2px;
 }

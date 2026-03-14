@@ -1,21 +1,21 @@
-import ModalNewBook from "./newBookForm";
-import StackCard from "./stackCard";
-import { Stack } from "../classes/Stack";
+import StackCard from "./QueueCard";
+import { Queue } from "../classes/Queue";
 import { useEffect, useState } from "react";
-import { librosData } from "../data/librosData";
-import type { Book } from "../classes/Book";
+import { MockedUsers } from "../data/UsersData";
+import type { User } from "../classes/User";
 import "../styles/stackSection.css";
+import ModalNewUser from "./newUserForm";
 
-function StackSection() {
-  const [libros, setLibros] = useState<Stack>(new Stack());
+function QueueSection() {
+  const [users, setUsers] = useState<Queue>(new Queue());
   const [trigger, updateTrigger] = useState(0);
   const [mostrarModal, setMostrarModal] = useState(false);
 
   //Inicializar con mocked data
   useEffect(() => {
-    if (libros.size() === 0) {
-      librosData.forEach((x) => {
-        libros.push(x);
+    if (users.size() === 0) {
+      MockedUsers.forEach((x) => {
+        users.enqueue(x);
       });
 
       //Actualizamos el contador dummy para desplegar correctamente los datos
@@ -23,47 +23,47 @@ function StackSection() {
     }
   }, []);
 
-  const manejarPop = () => {
-    //Metodo integrado de la clase stack
-    libros.pop()
-    updateTrigger((prev) => prev + 1)
-  }
 
-  const agregarLibro = (book:Book) => {
+  const encolarUsuario = (user: User) => {
     //Metodo integrado de la clase stack
-    libros.push(book)
-    updateTrigger((prev) => prev + 1)
-    setMostrarModal(false)
-  }
+    users.enqueue(user);
+    updateTrigger((prev) => prev + 1);
+    setMostrarModal(false);
+  };
 
   return (
     <>
       <div className="stack-section__header">
-        <h1 className="stack-section__title"> STACK DE LIBROS </h1>
+        <h1 className="stack-section__title"> COLA DE ATM </h1>
       </div>
 
       <div className="stack-section__actions">
-        <button className="stack-section__button stack-section__button--primary" onClick={manejarPop}>
-          Tomar Libro
-        </button>
-        <button className="stack-section__button stack-section__button--secondary" onClick={() => setMostrarModal(true)}> 
-            Abrir Modal 
+        <button
+          className="stack-section__button stack-section__button--secondary"
+          onClick={() => setMostrarModal(true)}
+        >
+          Abrir Modal
         </button>
       </div>
       {mostrarModal && (
-          <div className="stack-section__modal-host">
-            <ModalNewBook onClose={() => setMostrarModal(false)} onAdd={agregarLibro}/>
-          </div>
-        )}
+        <div className="stack-section__modal-host">
+          <ModalNewUser
+            onClose={() => setMostrarModal(false)}
+            onAdd={encolarUsuario}
+          />
+        </div>
+      )}
 
       <div className="stack-section__stack">
-        {libros.print().map((x) => (
-          <StackCard key={`${x.ISBN}}`} book={x} />
-        ))}
+        {users
+          .print()
+          .sort((a, b) => a.date.getTime() - b.date.getTime())
+          .map((x) => (
+            <StackCard key={x.name + x.date} user={x} />
+          ))}
       </div>
-      
     </>
   );
 }
 
-export default StackSection;
+export default QueueSection;
