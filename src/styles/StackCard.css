@@ -1,0 +1,86 @@
+.stack-card {
+  position: relative;
+  padding: 26px 24px 24px;
+  border: 1px solid rgba(102, 63, 30, 0.26);
+  border-radius: 22px 22px 18px 18px;
+  background:
+    linear-gradient(180deg, rgba(255, 251, 245, 0.98), rgba(241, 228, 200, 0.96)),
+    #fffaf0;
+  box-shadow:
+    0 20px 40px rgba(64, 42, 21, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.stack-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(90deg, rgba(110, 70, 33, 0.08), transparent 18%, transparent 82%, rgba(110, 70, 33, 0.08)),
+    repeating-linear-gradient(0deg, rgba(137, 102, 66, 0.05) 0, rgba(137, 102, 66, 0.05) 2px, transparent 2px, transparent 10px);
+  pointer-events: none;
+}
+
+.stack-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 26px 46px rgba(64, 42, 21, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.stack-card__header {
+  position: relative;
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid rgba(116, 76, 40, 0.2);
+}
+
+.stack-card__header::after {
+  content: "Registro bibliografico";
+  position: absolute;
+  top: -10px;
+  right: 0;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(122, 75, 44, 0.1);
+  color: #7a4b2c;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.stack-card__title {
+  padding-right: 124px;
+  font-size: 1.55rem;
+  color: #4a2f18;
+  line-height: 1.2;
+}
+
+.stack-card__line {
+  margin-top: 10px;
+  color: #5a4127;
+  font-size: 1rem;
+}
+
+.stack-card__line strong {
+  color: #3f2612;
+}
+
+@media (max-width: 720px) {
+  .stack-card {
+    padding: 22px 18px 20px;
+  }
+
+  .stack-card__title {
+    padding-right: 0;
+    font-size: 1.3rem;
+  }
+
+  .stack-card__header::after {
+    position: static;
+    display: inline-block;
+    margin-top: 10px;
+  }
+}

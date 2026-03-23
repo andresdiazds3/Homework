@@ -4,5 +4,6 @@ import { AuthContext } from './context/authContext'
 
 export function PrivateRoute({ children }: { children: React.ReactNode }) {
   const auth = useContext(AuthContext)
+  if (auth?.loading) return null
   return auth?.user ? <>{children}</> : <Navigate to="/login" replace />
 }

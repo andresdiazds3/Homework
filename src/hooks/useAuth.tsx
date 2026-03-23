@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 export function useAuth() {
   
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -10,6 +11,7 @@ export function useAuth() {
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
+    setLoading(false);
   }, []);
 
   const login = (userData: any) => {
@@ -22,6 +24,6 @@ export function useAuth() {
     localStorage.removeItem('user')
   }
 
-  return {user, login, logout}
+  return {user, login, logout, loading}
 
 }
