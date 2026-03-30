@@ -84,6 +84,35 @@
   filter: brightness(1.03);
 }
 
+.login-form__button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.login-form__toggle {
+  margin-top: 12px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  color: #1f6399;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: rgba(31, 99, 153, 0.08);
+  cursor: pointer;
+  transition: all 160ms ease;
+}
+
+.login-form__toggle:hover:not(:disabled) {
+  background: rgba(31, 99, 153, 0.12);
+  transform: translateY(-1px);
+}
+
+.login-form__toggle:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
 .login-form__hint {
   margin: 8px 0 0;
   text-align: center;

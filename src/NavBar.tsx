@@ -6,6 +6,7 @@ import './styles/NavBar.css'
 export function Navbar() {
   const auth = useContext(AuthContext)
   const navigate = useNavigate()
+  const username = auth?.user?.displayName || auth?.user?.email?.split('@')[0] || 'Usuario'
 
   const handleLogout = () => {
     auth?.logout()
@@ -20,7 +21,7 @@ export function Navbar() {
       </div>
 
       <div className="navbar__right">
-        <span className="navbar__user">Hola, {(auth?.user as any)?.name}</span>
+        <span className="navbar__user">Hola, {username}</span>
         <button className="navbar__button" onClick={handleLogout}>Cerrar sesion</button>
       </div>
     </nav>

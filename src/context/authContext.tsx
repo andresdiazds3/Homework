@@ -2,10 +2,12 @@ import { createContext, type ReactNode } from "react";
 import { useAuth } from "../hooks/useAuth";
 
 type AuthContextValue = {
-  user: unknown;
-  login: (userData: unknown) => void;
-  logout: () => void;
-  loading: boolean; // 👈
+  user: any;
+  login: (email: string, password: string) => Promise<void>;
+  logout: () => Promise<void>;
+  register: (email: string, password: string) => Promise<void>;
+  loading: boolean;
+  error: string;
 }
 
 type AuthProviderProps = {
@@ -15,10 +17,10 @@ type AuthProviderProps = {
 export const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
 export function AuthProvider({ children }: AuthProviderProps) {
-	const { user, login, logout, loading } = useAuth();
+	const { user, login, logout, loading, register, error } = useAuth();
 
 	return (
-		<AuthContext.Provider value={{ user, login, logout, loading }}>
+		<AuthContext.Provider value={{ user, login, logout, loading, register, error }}>
 			{children}
 		</AuthContext.Provider>
 	);
