@@ -1,38 +1,33 @@
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { Login } from './pages/Login'
-import StackSection from './pages/StackSection'
+import { Register } from './pages/Register'
+import { Tasks } from './pages/Tasks'
 import { PrivateRoute } from './PrivateRoutes'
-import QueueSection from './pages/QueueSection'
 import { Navbar } from './NavBar'
-
-
 
 export default function App() {
   const location = useLocation()
+  const hideNavbarRoutes = ['/login', '/register']
+
   return (
     <>
-      {location.pathname !== '/login' && (
+      {!hideNavbarRoutes.includes(location.pathname) && (
         <PrivateRoute>
           <Navbar />
         </PrivateRoute>
       )}
 
       <Routes>
+        <Route path="/" element={<Navigate to="/tasks" replace />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
           
-        <Route path="/StackSection" element={
+        <Route path="/tasks" element={
           <PrivateRoute>
-            <StackSection />
+            <Tasks />
           </PrivateRoute>
         } />
-
-        <Route path="/QueueSection" element={
-          <PrivateRoute>
-            <QueueSection />
-          </PrivateRoute>
-        } />
-
-        <Route path="*" element={<Navigate to="/login" />} />
+        <Route path="*" element={<Navigate to="/tasks" replace />} />
       </Routes>
     </>
   )

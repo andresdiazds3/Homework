@@ -2,12 +2,16 @@ import { createContext, type ReactNode } from "react";
 import { useAuth } from "../hooks/useAuth";
 
 type AuthContextValue = {
-  user: any;
+	user: {
+		uid: string;
+		email: string | null;
+		displayName: string | null;
+	} | null;
   login: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
   register: (email: string, password: string) => Promise<void>;
   loading: boolean;
-  error: string;
+	error: string | null;
 }
 
 type AuthProviderProps = {

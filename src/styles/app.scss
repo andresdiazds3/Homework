@@ -1,0 +1,139 @@
+:root {
+  color: #111827;
+  background: #f5f5f5;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+.nav-main {
+  border-bottom: 1px solid #d1d5db;
+  background: #111827;
+
+  &__badge {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.35rem;
+    display: grid;
+    place-items: center;
+    color: #ffffff;
+    font-weight: 700;
+    background: #374151;
+  }
+
+  &__title,
+  &__user {
+    color: #ffffff;
+  }
+
+  &__link {
+    border: 1px solid #6b7280;
+    color: #ffffff;
+    background: #1f2937;
+
+    &--active {
+      color: #111827;
+      background: #ffffff;
+      border-color: #ffffff;
+    }
+  }
+
+  &__logout {
+    color: #ffffff;
+    border: 1px solid #4b5563;
+    background: #374151;
+  }
+}
+
+.auth-page {
+  min-height: calc(100vh - 56px);
+  display: grid;
+  place-items: center;
+}
+
+.auth-card {
+  width: min(520px, 100%);
+  border-radius: 0.5rem;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  box-shadow: 0 10px 25px rgba(17, 24, 39, 0.08);
+
+  &__eyebrow {
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #374151;
+  }
+
+  &__title {
+    color: #111827;
+  }
+
+  &__subtitle,
+  &__hint {
+    color: #4b5563;
+  }
+}
+
+.auth-field,
+.task-field {
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: #111827;
+}
+
+.auth-btn,
+.task-btn {
+  color: #ffffff;
+  font-weight: 600;
+  background: #111827;
+}
+
+.auth-error,
+.task-error {
+  border: 1px solid #d1d5db;
+  border-radius: 0.35rem;
+  padding: 0.65rem 0.75rem;
+  color: #b91c1c;
+  background: #ffffff;
+}
+
+.task-page {
+  max-width: 960px;
+}
+
+.task-header,
+.task-panel {
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  box-shadow: 0 10px 25px rgba(17, 24, 39, 0.06);
+}
+
+.task-counter {
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  color: #111827;
+  font-weight: 600;
+  background: #e5e7eb;
+}
+
+.task-item {
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+
+  &--done {
+    background: #f9fafb;
+  }
+
+  &__description {
+    color: #4b5563;
+  }
+}

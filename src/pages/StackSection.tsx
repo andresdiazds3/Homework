@@ -7,8 +7,8 @@ import type { Book } from "../classes/Book";
 import "../styles/stackSection.css";
 
 function StackSection() {
-  const [libros, setLibros] = useState<Stack>(new Stack());
-  const [trigger, updateTrigger] = useState(0);
+  const [libros] = useState<Stack>(new Stack());
+  const [, updateTrigger] = useState(0);
   const [mostrarModal, setMostrarModal] = useState(false);
 
   //Inicializar con mocked data

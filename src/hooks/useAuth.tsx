@@ -1,29 +1,44 @@
 import { useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+  type User as FirebaseUser,
+} from "firebase/auth";
 import { auth } from "../firebase/config.ts";
 
-interface User {
+interface AuthUser {
   uid: string;
   email: string | null;
   displayName: string | null;
 }
 
+const getFirebaseErrorMessage = (error: unknown): string => {
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  return "Unexpected error with Firebase auth.";
+};
+
+const mapFirebaseUser = (currentUser: FirebaseUser): AuthUser => ({
+  uid: currentUser.uid,
+  email: currentUser.email,
+  displayName: currentUser.displayName,
+});
+
 export function useAuth() { 
   
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<AuthUser | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [error, setError] = useState<string | null>(null);
 
   // Firebase detecta automáticamente si el usuario está autenticado
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
-        // Usuario autenticado - Firebase guarda lo que le mandemos automáticamente
-        setUser({
-          uid: currentUser.uid,
-          email: currentUser.email,
-          displayName: currentUser.displayName
-        });
+        setUser(mapFirebaseUser(currentUser));
       } else {
         // Usuario no autenticado
         setUser(null);
@@ -37,12 +52,13 @@ export function useAuth() {
 
   const login = async (email: string, password: string) => {
     try {
-      setError("");
+      setError(null);
       await signInWithEmailAndPassword(auth, email, password);
       // onAuthStateChanged se encarga de actualizar el estado
-    } catch (err: any) {
-      setError(err.message);
-      throw err;
+    } catch (error) {
+      const message = getFirebaseErrorMessage(error);
+      setError(message);
+      throw new Error(message);
     }
   }
 
@@ -50,19 +66,20 @@ export function useAuth() {
     try {
       await signOut(auth);
       setUser(null);
-    } catch (err: any) {
-      setError(err.message);
+    } catch (error) {
+      setError(getFirebaseErrorMessage(error));
     }
   }
 
   const register = async (email: string, password: string) => {
     try {
-      setError("");
+      setError(null);
       await createUserWithEmailAndPassword(auth, email, password);
       // onAuthStateChanged se encarga de actualizar el estado
-    } catch (err: any) {
-      setError(err.message);
-      throw err;
+    } catch (error) {
+      const message = getFirebaseErrorMessage(error);
+      setError(message);
+      throw new Error(message);
     }
   }
 
