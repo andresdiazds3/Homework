@@ -33,20 +33,25 @@ export const TasksContext = createContext<TasksContextValue | undefined>(undefin
 export function TasksProvider({ children }: { children: ReactNode }) {
   const auth = useContext(AuthContext)
   const uid = auth?.user?.uid ?? null
-  const { results, isPending, error, getAll, add, update, remove } = useCollection(uid ? `users/${uid}/tasks` : '')
+  const { results, isPending, error, getAll, add, update, remove } = useCollection('tasks')
 
   useEffect(() => {
     if (uid) {
-      void getAll()
+      void getAll([['userId', '==', uid]])
     }
   }, [uid])
 
   const getAllTasks = async () => {
-    await getAll()
+    if (!uid) {
+      return
+    }
+
+    await getAll([['userId', '==', uid]])
   }
 
   const createTask = async ({ title, description }: TaskPayload) => {
     await add({
+      userId: uid,
       title,
       description,
       done: false,
