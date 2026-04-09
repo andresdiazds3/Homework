@@ -1,11 +1,13 @@
+export type NodeValue = number;
+
 type NodeProps = {
-    valor: any;
+    valor: number;
     izquierda?: Node | null;
     derecha?: Node | null;
 };
 
 export class Node {
-    valor: any;
+    valor: number;
     izquierda: Node | null;
     derecha: Node | null;
 
@@ -15,7 +17,7 @@ export class Node {
         this.derecha = derecha;
     }
 
-    isLead(){
+    isLeaf(){
         if (this.izquierda === null && this.derecha === null){
             return true;
         } else {

@@ -1,11 +1,11 @@
 import './App.css'
-import StackSection from './components/stackSection'
+import PanelArbolBinario from './components/BinaryTreeView'
 
 function App() {
 
   return (
     <>
-      <StackSection />
+      <PanelArbolBinario />
     </>
   )
 }
