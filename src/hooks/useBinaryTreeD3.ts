@@ -4,6 +4,8 @@ import { ArbolBinario } from '../classes/BinaryTree';
 import { Node } from '../classes/Node';
 import { type NodoData } from '../data/arbolData';
 
+export type TipoRecorrido = 'preorden' | 'inorder' | 'postorder';
+
 const construirNodoDesdeData = (nodoData: NodoData | null): Node | null => {
   if (!nodoData) {
     return null;
@@ -38,7 +40,7 @@ export const useBinaryTreeD3 = (dataInicial: NodoData) => {
   }, [dataInicial]);
 
   const [, setVersionRenderDummy] = useState(0);
-  const [valorAInsertar, setValorAInsertar] = useState('21');
+  const [valorAInsertar, setValorAInsertar] = useState('');
   const [errorInsercion, setErrorInsercion] = useState('');
 
   const insertarConReglaArbolBinarioBusqueda = () => {
@@ -54,6 +56,19 @@ export const useBinaryTreeD3 = (dataInicial: NodoData) => {
     setVersionRenderDummy((versionAnterior) => versionAnterior + 1);
   };
 
+  const obtenerRecorrido = (tipo: TipoRecorrido) => {
+    switch (tipo) {
+      case 'preorden':
+        return arbolBinario.preorden();
+      case 'inorder':
+        return arbolBinario.inorder();
+      case 'postorder':
+        return arbolBinario.postorder();
+      default:
+        return [];
+    }
+  };
+
   const raizTransformada = convertirNodoAFormatoD3(arbolBinario.raiz);
   const datosArbolVisual = raizTransformada ? [raizTransformada] : [];
 
@@ -63,5 +78,6 @@ export const useBinaryTreeD3 = (dataInicial: NodoData) => {
     setValorAInsertar,
     errorInsercion,
     insertarConReglaArbolBinarioBusqueda,
+    obtenerRecorrido,
   };
 };

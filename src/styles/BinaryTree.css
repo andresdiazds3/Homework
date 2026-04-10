@@ -51,6 +51,47 @@
   font-weight: 600;
 }
 
+.tree-traversal-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tree-traversal-controls label {
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.tree-traversal-controls select {
+  border: 1px solid #9ca3af;
+  border-radius: 10px;
+  padding: 0.5rem 0.65rem;
+  font: inherit;
+  min-width: 160px;
+}
+
+.tree-traversal-controls button {
+  border: 1px solid #0f766e;
+  background: #0f766e;
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 0.5rem 0.85rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.tree-traversal-result {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #334155;
+  background: #ecfeff;
+  border: 1px solid #bae6fd;
+  border-radius: 10px;
+  padding: 0.6rem 0.75rem;
+}
+
 .tree-canvas {
   width: 100%;
   height: 68vh;
@@ -70,8 +111,17 @@
     width: 100%;
   }
 
+  .tree-traversal-controls {
+    width: 100%;
+  }
+
   .tree-controls input,
   .tree-controls button {
+    flex: 1;
+  }
+
+  .tree-traversal-controls select,
+  .tree-traversal-controls button {
     flex: 1;
   }
 
