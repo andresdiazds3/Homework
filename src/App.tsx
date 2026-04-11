@@ -1,11 +1,11 @@
 import './App.css'
-import PanelArbolBinario from './components/BinaryTreeView'
+import NarySidebar from './components/NarySidebar'
 
 function App() {
 
   return (
     <>
-      <PanelArbolBinario />
+      <NarySidebar />
     </>
   )
 }
