@@ -1,0 +1,183 @@
+.tree-app {
+  &__layout {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 2rem 1rem 3rem;
+    display: grid;
+    gap: 1rem;
+  }
+
+  &__header {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #d7e3ef;
+    box-shadow: 0 10px 24px rgba(18, 42, 66, 0.08);
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+
+    h1 {
+      margin: 0.15rem 0;
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+    }
+  }
+
+  &__eyebrow {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #4f6480;
+    font-weight: 700;
+    font-size: 0.72rem;
+  }
+
+  &__user {
+    margin: 0;
+    color: #536681;
+  }
+
+  &__logout-btn,
+  &__primary-btn,
+  &__danger-btn {
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    padding: 0.6rem 0.9rem;
+    cursor: pointer;
+  }
+
+  &__logout-btn {
+    background: #f0f5fa;
+    color: #1f3d60;
+  }
+
+  &__primary-btn {
+    background: linear-gradient(135deg, #2f6eb3, #225791);
+    color: #fff;
+  }
+
+  &__danger-btn {
+    margin-left: auto;
+    background: #fee9e7;
+    color: #8b1f1f;
+    padding: 0.35rem 0.65rem;
+    font-size: 0.8rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-shrink: 0;
+
+    svg {
+      font-size: 0.9rem;
+    }
+  }
+
+  &__panel {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #d7e3ef;
+    box-shadow: 0 10px 24px rgba(18, 42, 66, 0.08);
+    padding: 1rem;
+
+    h2 {
+      margin-top: 0;
+    }
+  }
+
+  &__form {
+    display: grid;
+    gap: 0.75rem;
+
+    label {
+      display: grid;
+      gap: 0.35rem;
+      font-weight: 600;
+    }
+
+    input,
+    select {
+      border-radius: 10px;
+      border: 1px solid #cbd7e4;
+      padding: 0.6rem 0.75rem;
+    }
+  }
+
+  &__node-list {
+    list-style: none;
+    padding-left: 0.7rem;
+    margin: 0;
+    display: grid;
+    gap: 0.45rem;
+  }
+
+  &__node-item {
+    position: relative;
+  }
+
+  &__node-row {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+    padding: 0.35rem 0.4rem;
+    border-radius: 9px;
+
+    &:hover {
+      background: #f4f8fd;
+    }
+  }
+
+  &__node-icon {
+    line-height: 1;
+    color: #2f6eb3;
+    font-size: 1.1rem;
+    margin-top: 0.15rem;
+  }
+
+  &__node-name {
+    margin: 0;
+    font-weight: 700;
+  }
+
+  &__node-meta {
+    margin: 0;
+    color: #536681;
+    font-size: 0.85rem;
+  }
+
+  &__notice {
+    margin: 0;
+    color: #b3261e;
+    font-weight: 600;
+    padding: 0.6rem 0.75rem;
+    border-radius: 10px;
+    background: #fef1ef;
+    border: 1px solid #f6c8c1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  &__notice-close {
+    border: none;
+    background: transparent;
+    color: inherit;
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+    margin-top: -0.05rem;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .tree-app {
+    &__header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+}

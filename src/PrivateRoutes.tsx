@@ -1,9 +1,19 @@
 import { useContext } from 'react'
-import { Navigate } from 'react-router-dom'
+import { Navigate, Outlet } from 'react-router-dom'
 import { AuthContext } from './context/authContext'
 
-export function PrivateRoute({ children }: { children: React.ReactNode }) {
+export function PrivateRoute() {
   const auth = useContext(AuthContext)
+
   if (auth?.loading) return null
-  return auth?.user ? <>{children}</> : <Navigate to="/login" replace />
+
+  return auth?.user ? <Outlet /> : <Navigate to="/login" replace />
+}
+
+export function PublicRoute() {
+  const auth = useContext(AuthContext)
+
+  if (auth?.loading) return null
+
+  return auth?.user ? <Navigate to="/tree" replace /> : <Outlet />
 }

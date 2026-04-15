@@ -7,7 +7,7 @@ const getErrorMessage = (error: unknown): string => {
     return error.message
   }
 
-  return 'Unexpected register error.'
+  return 'Ocurrio un error inesperado al registrarse.'
 }
 
 export function Register() {
@@ -20,7 +20,7 @@ export function Register() {
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   if (auth?.user) {
-    return <Navigate to="/tasks" replace />
+    return <Navigate to="/tree" replace />
   }
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -45,7 +45,7 @@ export function Register() {
       setError(null)
       setIsSubmitting(true)
       await auth?.register(email, password)
-      navigate('/tasks', { replace: true })
+      navigate('/tree', { replace: true })
     } catch (registerError) {
       setError(getErrorMessage(registerError))
     } finally {
@@ -56,9 +56,9 @@ export function Register() {
   return (
     <section className="auth-page container py-5">
       <div className="auth-card mx-auto p-4 p-md-5">
-        <span className="auth-card__eyebrow">Task Challenge</span>
+        <span className="auth-card__eyebrow">N-ary File Tree</span>
         <h1 className="auth-card__title mb-2">Crear cuenta</h1>
-        <p className="auth-card__subtitle mb-4">Registra tu usuario con Firebase y empieza a gestionar tareas.</p>
+        <p className="auth-card__subtitle mb-4">Registra tu usuario y empieza a gestionar carpetas y archivos.</p>
 
         <form className="d-grid gap-3" onSubmit={handleSubmit}>
           <input
