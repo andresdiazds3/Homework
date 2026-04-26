@@ -20,12 +20,41 @@ export class Graph {
 
     addNode(newNode: Node){
         this.nodes.push(newNode);
-        this.adjlist[newNode.nombre] = []
+
+        if (newNode.tipo === "city") {
+            this.adjlist[newNode.id] = [];
+            return;
+        }
+
+        if (!newNode.ciudadId) {
+            throw new Error("El nodo persona debe tener una ciudadId");
+        }
+
+        if (!this.adjlist[newNode.ciudadId]) {
+            throw new Error("La ciudad referenciada no existe en el grafo");
+        }
+
+        this.adjlist[newNode.ciudadId].push(newNode);
     }
 
-    addEdge(node1: Node, node2: Node){
-        this.adjlist[node1.nombre].push(node2)
-        this.adjlist[node2.nombre].push(node1)
+    addEdge(cityNode: Node, personNode: Node){
+        if (cityNode.tipo !== "city") {
+            throw new Error("node1 debe ser una ciudad");
+        }
+
+        if (personNode.tipo !== "person") {
+            throw new Error("node2 debe ser una persona");
+        }
+
+        if (personNode.ciudadId !== cityNode.id) {
+            throw new Error("La persona debe referenciar a la ciudad de destino");
+        }
+
+        if (!this.adjlist[cityNode.id]) {
+            this.adjlist[cityNode.id] = [];
+        }
+
+        this.adjlist[cityNode.id].push(personNode);
     }
 
     searchNode(node:Node){
@@ -34,9 +63,28 @@ export class Graph {
     }
 
     printAdjacency(node:Node){
-        if(this.searchNode(node)){
-            console.log(this.adjlist[node.nombre])
+        if (!this.searchNode(node)) {
+            return;
         }
+
+        if (node.tipo !== "city") {
+            console.log("Solo las ciudades tienen lista de adyacencia");
+            return;
+        }
+
+        console.log(this.adjlist[node.id] ?? [])
+    }
+
+    getPeopleByCity(cityName: string){
+        const cityNode = this.nodes.find(
+            node => node.tipo === "city" && node.nombre === cityName
+        );
+
+        if (!cityNode) {
+            return [];
+        }
+
+        return this.adjlist[cityNode.id] ?? [];
     }
 
     printGraph(){
