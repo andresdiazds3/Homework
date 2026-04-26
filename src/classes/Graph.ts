@@ -19,6 +19,10 @@ export class Graph {
     }
 
     addNode(newNode: Node){
+        if (this.nodes.some(node => node.id === newNode.id)) {
+            throw new Error("Ya existe un nodo con ese id");
+        }
+
         this.nodes.push(newNode);
 
         if (newNode.tipo === "city") {
@@ -46,12 +50,18 @@ export class Graph {
             throw new Error("node2 debe ser una persona");
         }
 
-        if (personNode.ciudadId !== cityNode.id) {
-            throw new Error("La persona debe referenciar a la ciudad de destino");
-        }
-
         if (!this.adjlist[cityNode.id]) {
             this.adjlist[cityNode.id] = [];
+        }
+
+        Object.keys(this.adjlist).forEach((cityId) => {
+            this.adjlist[cityId] = this.adjlist[cityId].filter(node => node.id !== personNode.id);
+        });
+
+        personNode.ciudadId = cityNode.id;
+
+        if (this.adjlist[cityNode.id].some(node => node.id === personNode.id)) {
+            return;
         }
 
         this.adjlist[cityNode.id].push(personNode);
@@ -85,6 +95,18 @@ export class Graph {
         }
 
         return this.adjlist[cityNode.id] ?? [];
+    }
+
+    getCities(){
+        return this.nodes.filter(node => node.tipo === "city");
+    }
+
+    getPeople(){
+        return this.nodes.filter(node => node.tipo === "person");
+    }
+
+    getNodeById(id: string){
+        return this.nodes.find(node => node.id === id);
     }
 
     printGraph(){
