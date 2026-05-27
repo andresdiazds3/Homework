@@ -1,12 +1,16 @@
-export default class MaxHeap {
-  private heap: { name: string; popularity: number }[] = [];
+import Song from "./Song";
 
-  push(product: { name: string; popularity: number }) {
-    this.heap.push(product);
+export default class MaxHeap {
+  private heap: Song[] = [];
+
+  // Mete una canción al heap para ordenar por popularidad.
+  push(song: Song) {
+    this.heap.push(song);
     this.percolateUp();
   }
 
-  pop(): { name: string; popularity: number } | undefined {
+  // Saca la canción más popular del heap.
+  pop(): Song | undefined {
     if (this.heap.length === 0) return undefined;
     const n = this.heap.length;
     [this.heap[0], this.heap[n - 1]] = [this.heap[n - 1], this.heap[0]];
@@ -15,7 +19,8 @@ export default class MaxHeap {
     return max;
   }
 
-  topK(k: number): { name: string; popularity: number }[] {
+  // Devuelve las k canciones más populares sin romper el heap original.
+  topK(k: number): Song[] {
     const copy = new MaxHeap();
     copy.heap = [...this.heap];
     const results = [];

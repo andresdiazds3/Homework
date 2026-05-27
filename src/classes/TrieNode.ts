@@ -1,12 +1,15 @@
+import Song from "./Song";
+
 class TrieNode {
   children: Map<string, TrieNode>;
   isEndOfWord: boolean;
-  product: { name: string; popularity: number } | null;
+  song: Song | null;
 
+  // Guarda una sola rama del trie y la canción completa cuando termina una palabra.
   constructor() {
     this.children = new Map();
     this.isEndOfWord = false;
-    this.product = null;
+    this.song = null;
   }
 }
 

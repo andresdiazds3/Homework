@@ -1,0 +1,177 @@
+[
+  {
+    "name": "Blinding Lights",
+    "artist": "The Weeknd",
+    "genre": "Pop",
+    "imgUrl": "https://picsum.photos/seed/blinding-lights/400/400",
+    "popularity": 98
+  },
+  {
+    "name": "Save Your Tears",
+    "artist": "The Weeknd",
+    "genre": "Pop",
+    "imgUrl": "https://picsum.photos/seed/save-your-tears/400/400",
+    "popularity": 94
+  },
+  {
+    "name": "Shape of You",
+    "artist": "Ed Sheeran",
+    "genre": "Pop",
+    "imgUrl": "https://picsum.photos/seed/shape-of-you/400/400",
+    "popularity": 97
+  },
+  {
+    "name": "Bad Habits",
+    "artist": "Ed Sheeran",
+    "genre": "Pop",
+    "imgUrl": "https://picsum.photos/seed/bad-habits/400/400",
+    "popularity": 88
+  },
+  {
+    "name": "Yellow",
+    "artist": "Coldplay",
+    "genre": "Rock",
+    "imgUrl": "https://picsum.photos/seed/yellow/400/400",
+    "popularity": 91
+  },
+  {
+    "name": "Viva La Vida",
+    "artist": "Coldplay",
+    "genre": "Rock",
+    "imgUrl": "https://picsum.photos/seed/viva-la-vida/400/400",
+    "popularity": 93
+  },
+  {
+    "name": "Someone Like You",
+    "artist": "Adele",
+    "genre": "Soul",
+    "imgUrl": "https://picsum.photos/seed/someone-like-you/400/400",
+    "popularity": 95
+  },
+  {
+    "name": "Rolling in the Deep",
+    "artist": "Adele",
+    "genre": "Soul",
+    "imgUrl": "https://picsum.photos/seed/rolling-in-the-deep/400/400",
+    "popularity": 96
+  },
+  {
+    "name": "Levitating",
+    "artist": "Dua Lipa",
+    "genre": "Pop",
+    "imgUrl": "https://picsum.photos/seed/levitating/400/400",
+    "popularity": 93
+  },
+  {
+    "name": "Don't Start Now",
+    "artist": "Dua Lipa",
+    "genre": "Pop",
+    "imgUrl": "https://picsum.photos/seed/dont-start-now/400/400",
+    "popularity": 92
+  },
+  {
+    "name": "As It Was",
+    "artist": "Harry Styles",
+    "genre": "Pop",
+    "imgUrl": "https://picsum.photos/seed/as-it-was/400/400",
+    "popularity": 95
+  },
+  {
+    "name": "Watermelon Sugar",
+    "artist": "Harry Styles",
+    "genre": "Pop",
+    "imgUrl": "https://picsum.photos/seed/watermelon-sugar/400/400",
+    "popularity": 89
+  },
+  {
+    "name": "Believer",
+    "artist": "Imagine Dragons",
+    "genre": "Rock",
+    "imgUrl": "https://picsum.photos/seed/believer/400/400",
+    "popularity": 94
+  },
+  {
+    "name": "Thunder",
+    "artist": "Imagine Dragons",
+    "genre": "Rock",
+    "imgUrl": "https://picsum.photos/seed/thunder/400/400",
+    "popularity": 90
+  },
+  {
+    "name": "Peaches",
+    "artist": "Justin Bieber",
+    "genre": "R&B",
+    "imgUrl": "https://picsum.photos/seed/peaches/400/400",
+    "popularity": 87
+  },
+  {
+    "name": "Stay",
+    "artist": "The Kid LAROI",
+    "genre": "Pop",
+    "imgUrl": "https://picsum.photos/seed/stay/400/400",
+    "popularity": 96
+  },
+  {
+    "name": "Sunflower",
+    "artist": "Post Malone",
+    "genre": "Hip-Hop",
+    "imgUrl": "https://picsum.photos/seed/sunflower/400/400",
+    "popularity": 95
+  },
+  {
+    "name": "Circles",
+    "artist": "Post Malone",
+    "genre": "Hip-Hop",
+    "imgUrl": "https://picsum.photos/seed/circles/400/400",
+    "popularity": 92
+  },
+  {
+    "name": "Heat Waves",
+    "artist": "Glass Animals",
+    "genre": "Indie",
+    "imgUrl": "https://picsum.photos/seed/heat-waves/400/400",
+    "popularity": 91
+  },
+  {
+    "name": "Shivers",
+    "artist": "Ed Sheeran",
+    "genre": "Pop",
+    "imgUrl": "https://picsum.photos/seed/shivers/400/400",
+    "popularity": 90
+  },
+  {
+    "name": "Paradise",
+    "artist": "Coldplay",
+    "genre": "Rock",
+    "imgUrl": "https://picsum.photos/seed/paradise/400/400",
+    "popularity": 88
+  },
+  {
+    "name": "Skyfall",
+    "artist": "Adele",
+    "genre": "Soul",
+    "imgUrl": "https://picsum.photos/seed/skyfall/400/400",
+    "popularity": 89
+  },
+  {
+    "name": "Calm Down",
+    "artist": "Rema",
+    "genre": "Afrobeats",
+    "imgUrl": "https://picsum.photos/seed/calm-down/400/400",
+    "popularity": 94
+  },
+  {
+    "name": "Happier Than Ever",
+    "artist": "Billie Eilish",
+    "genre": "Alternative",
+    "imgUrl": "https://picsum.photos/seed/happier-than-ever/400/400",
+    "popularity": 86
+  },
+  {
+    "name": "Bad Guy",
+    "artist": "Billie Eilish",
+    "genre": "Alternative",
+    "imgUrl": "https://picsum.photos/seed/bad-guy/400/400",
+    "popularity": 93
+  }
+]

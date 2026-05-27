@@ -1,37 +1,35 @@
 import Trie from "./Trie";
 import MaxHeap from "./MaxHeap";
+import Song from "./Song";
 
 export default class SearchEngine {
   private trie: Trie;
 
+  // Crea la estructura que indexa las canciones para buscar por prefijo.
   constructor() {
     this.trie = new Trie();
   }
 
-  
-  insert(name: string, popularity: number): void {
-    this.trie.insert(name, popularity);
+  // Inserta una canción completa en el trie.
+  insert(song: Song): void {
+    this.trie.insert(song);
   }
 
-  // Metodo para buscar los mas populares, recibe la query desde el componente
-  // que le da el prefijo y el numeor de elementos mas populares q bsucar
-  searchTopK(
-    prefix: string,
-    k: number
-  ): { name: string; popularity: number }[] {
-    //Buscar todos los productos que coincidan con el prefijo
-    const products = this.trie.searchByPrefix(prefix);
+  // Busca las canciones que coinciden con el prefijo y devuelve las más populares.
+  searchTopK(prefix: string, k: number): Song[] {
+    // Busca todas las canciones que coinciden con el prefijo.
+    const songs = this.trie.searchByPrefix(prefix);
 
-    //no hay resultados, retornar array vacío
-    if (products.length === 0) return [];
+    // Si no hay coincidencias, devuelve un arreglo vacío.
+    if (songs.length === 0) return [];
 
-    //Crear un MaxHeap con los productos encontrados
+    // Ordena las coincidencias por popularidad usando el heap.
     const heap = new MaxHeap();
-    for (const product of products) {
-      heap.push(product);
+    for (const song of songs) {
+      heap.push(song);
     }
 
-    // retornar los Top K
+    // Devuelve solo las k canciones más populares.
     return heap.topK(k);
   }
 }

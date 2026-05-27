@@ -1,0 +1,17 @@
+.song-carrusel {
+  display: grid;
+  gap: 16px;
+}
+
+.song-carrusel__header {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.song-carrusel > .song-card + .song-card {
+  margin-top: 14px;
+}

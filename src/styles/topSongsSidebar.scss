@@ -1,0 +1,84 @@
+.top-sidebar {
+  border: 1px solid var(--border);
+  background: var(--panel);
+  border-radius: 18px;
+  padding: 12px;
+  align-self: start;
+  position: sticky;
+  top: 16px;
+}
+
+.top-sidebar__header {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  margin-bottom: 10px;
+
+  h2 {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+}
+
+.top-sidebar__list {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.top-sidebar__item {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0f0f0f;
+  color: var(--text);
+  border-radius: 12px;
+  padding: 8px;
+  display: grid;
+  grid-template-columns: 20px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  text-align: left;
+  cursor: pointer;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+}
+
+.top-sidebar__rank {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.top-sidebar__meta {
+  min-width: 0;
+}
+
+.top-sidebar__name {
+  display: block;
+  font-size: 0.84rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.top-sidebar__artist {
+  display: block;
+  font-size: 0.76rem;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.top-sidebar__rate {
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+
+@media (max-width: 960px) {
+  .top-sidebar {
+    position: static;
+  }
+}
